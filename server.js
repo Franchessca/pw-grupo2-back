@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, './static')));
 app.use(bodyParser.json());
 
 app.use('/api/perfilActualizado', perfiles)//front
-app.use('/api/recursoAñadido', añadirLibro)
+app.use('/api/recursoAgregado', añadirLibro)
 
 app.get('/', (req,res) => {
   res.sendFile(path.join(__dirname, './static/index.html'));
