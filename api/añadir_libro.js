@@ -35,4 +35,21 @@ ruta.post('/libroGuardar', async function (req, res) {
     res.status(200).json( data );
 });
 
+ruta.delete('/libroEliminar', async function (req, res) {
+   let libro = req.body;
+   let data  = await db.resource.destroy(
+     {
+        where : {
+         titulo : libro.titulo,
+         autores : libro.autor,
+         isbn : libro.isbn,
+         tipo : libro.tipo,
+        }
+     }
+   )
+    
+   console.log( data );
+   res.end( JSON.stringify(data));
+});
+
 module.exports = ruta
