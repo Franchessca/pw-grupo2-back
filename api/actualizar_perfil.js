@@ -90,11 +90,11 @@ ruta.put('/adminActualizar', async function (req,res) {
            data = await db.user.update(
                { 
                 nombre: userData.nombre || data.nombre,
-                apellidos: userData.apellido || data.apellido,
-                tipo_documento: userData.tipoDocumento || data.tipo_documento,
-                n_documento: userData.nroDocumento || data.n_documento,
+                apellidos: userData.apellidos || data.apellido,
+                tipo_documento: userData.tipo_documento || data.tipo_documento,
+                n_documento: userData.n_documento || data.n_documento,
                 correo: userData.correo || data.correo,
-                contrasenia: userData.contraseña || data.contrasenia,
+                contrasenia: userData.contrasenia || data.contrasenia,
                 imagen: userData.imagen || data.imagen,
               },{
                 where: {

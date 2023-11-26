@@ -47,7 +47,35 @@ ruta.delete('/libroEliminar', async function (req, res) {
         }
      }
    )
-    
+});
+
+   ruta.put('/libroModificar', async function (req,res) {
+      resourceData = req.body
+      console.log(resourceData)
+      let resourceId = resourceData["id"]//solo saca el objeto ""
+   
+      let data = await db.resource.findOne(
+         {
+            where: {
+               id : resourceId
+            }
+         }
+      )
+
+      if ( data != null )  { 
+         data = await db.resource.update(
+             { 
+               titulo : resourceData.titulo || data.titulo,
+               autores : resourceData.autor || data.autores,
+               isbn : resourceData.isbn || data.isbn,
+               tipo: resourceData.tipo || data.tipo
+            },{
+              where: {
+                  id: resourceId
+              }
+          }
+      );
+      }
    console.log( data );
    res.end( JSON.stringify(data));
 });
